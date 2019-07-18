@@ -10,11 +10,11 @@
 
 .todo-item:hover {
   background-color: #404040;
-  animation-name: example;
+  animation-name: color-change;
   animation-duration: 0.3s;
 }
 
-@keyframes example {
+@keyframes color-change {
   0%   {background-color: #282828;}
   25%  {background-color: #323232;}
   50%  {background-color: #363636;}

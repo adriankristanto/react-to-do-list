@@ -10,10 +10,10 @@ class App extends React.Component {
     this.state = {
       data: todosData
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  
-  handleChange(id){
+
+  handleClick(id){
     this.setState(
       function(prev){
         // const obj = prev;
@@ -32,7 +32,7 @@ class App extends React.Component {
   render(){
     // remember that with arrow notation, this will automatically set, however, with anonymous function, we need to do something like App.handleChange
     // we can't simply do this.handleChange
-    const todoComponents = this.state.data.map(item => <TodoItem key={item.id} todo={item} handleChange={this.handleChange}/>)
+    const todoComponents = this.state.data.map(item => <TodoItem key={item.id} todo={item} handleClick={this.handleClick}/>)
 
     return (
       <div className="todo-list">
