@@ -5,8 +5,8 @@ import TodoItem from "./TodoItem";
 function TodoList(props){
     return (
         <div className="todo-list">
-            {props.data.length !== 0?
-                props.data.map( todoItem => <TodoItem key={todoItem.id} todo={todoItem} handleItemClick={props.handleItemClick}/>) :
+            {props.data.length !== 0 ?
+                (props.data.map( todoItem => <TodoItem key={todoItem.id} todo={todoItem} handleItemClick={props.handleItemClick}/>)) :
                 (<p className="empty">Nothing ToDo.</p>)
             }
         </div>

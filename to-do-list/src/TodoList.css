@@ -1,3 +1,11 @@
+.todo-list {
+    position: fixed;
+    height: 90%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .empty {
     display: flex;
     justify-content: center;
