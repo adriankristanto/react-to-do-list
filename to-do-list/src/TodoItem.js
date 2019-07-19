@@ -1,5 +1,7 @@
 import React from "react";
+import "./TodoItem.css";
 
+// TODO: add an 'x' at the right side of the item to delete the item
 function TodoItem(props){
 
     const itemStyle = {

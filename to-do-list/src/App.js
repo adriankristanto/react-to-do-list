@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import TodoList from "./TodoList";
+import Footer from "./Footer";
 import todosData from "./todosData";
 
 class App extends React.Component {
@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      data: todosData // idea: todosData can stay here as we would need to be able to add to the data from the user input
+      data: todosData
     }
     this.handleItemClick = this.handleItemClick.bind(this);
   }
@@ -22,8 +22,12 @@ class App extends React.Component {
   }
 
   render(){
+
     return (
-      <TodoList handleItemClick={this.handleItemClick} data={this.state.data} />
+      <div className="App">
+        <TodoList handleItemClick={this.handleItemClick} data={this.state.data} />
+        <Footer />
+      </div>
     );
   }
 
