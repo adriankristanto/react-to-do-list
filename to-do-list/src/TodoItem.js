@@ -9,7 +9,7 @@ function TodoItem(props){
     }
 
     return (
-        <div id={props.todo.id} className="todo-item" onClick={() => props.handleClick(props.todo.id)}>
+        <div className="todo-item" onClick={() => props.handleItemClick(props.todo.id)}>
             <input type="checkbox" checked={props.todo.completed} />
             <p style={itemStyle}>{props.todo.text}</p>
         </div>
