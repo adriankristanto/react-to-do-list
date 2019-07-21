@@ -1,7 +1,6 @@
 import React from "react";
 import "./TodoItem.css";
 
-// TODO: add an 'x' at the right side of the item to delete the item
 function TodoItem(props){
 
     const itemStyle = {
@@ -14,7 +13,7 @@ function TodoItem(props){
         <div className="todo-item" onClick={() => props.handleItemClick(props.todo.id)}>
             <input type="checkbox" checked={props.todo.completed} />
             <p style={itemStyle}>{props.todo.text}</p>
-            <button>x</button>
+            <button onClick={() => props.handleRemoveClick(props.todo.id)}>x</button>
         </div>
     );
 }

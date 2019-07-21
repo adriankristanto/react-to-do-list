@@ -15,6 +15,7 @@ class App extends React.Component {
     }
     this.handleItemClick = this.handleItemClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemoveClick = this.handleRemoveClick.bind(this);
   }
 
   handleItemClick(id){
@@ -38,11 +39,19 @@ class App extends React.Component {
     );
   }
 
+  handleRemoveClick(id){
+    this.setState(
+      prev => ({
+        data: prev.data.filter(item => id !== item.id)
+      })
+    );
+  }
+
   render(){
 
     return (
       <div className="App">
-        <TodoList handleItemClick={this.handleItemClick} data={this.state.data} />
+        <TodoList handleItemClick={this.handleItemClick} data={this.state.data} handleRemoveClick={this.handleRemoveClick}/>
         <InputArea handleSubmit={this.handleSubmit}/>
         <Footer />
       </div>
