@@ -13,6 +13,20 @@
     animation-name: color-change;
     animation-duration: 0.3s;
   }
+
+  .todo-item button {
+    position: absolute;
+    right: 20px;
+    border-radius: 50%;
+    background-color: Transparent;
+    outline: none;
+    border: none;
+    color: whitesmoke;
+  }
+
+  .todo-item button:hover {
+    background-color: #282828;
+  }
   
   @keyframes color-change {
     0%   {background-color: #282828;}
