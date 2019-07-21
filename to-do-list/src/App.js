@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   handleSubmit(todoItem){
-    this.setState(
+    todoItem.replace(/\s/g, '').length && this.setState(
       prev => ({
         id: prev.id + 1,
         data: prev.data.concat({
