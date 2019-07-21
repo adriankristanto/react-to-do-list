@@ -1,7 +1,6 @@
 import React from 'react';
 import TodoList from "./TodoList";
 import Footer from "./Footer";
-import todosData from "./todosData";
 import InputArea from "./InputArea";
 
 // https://stackoverflow.com/questions/36856232/write-add-data-in-json-file-using-node-js
@@ -11,9 +10,11 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      data: todosData
+      id: 0,
+      data: []
     }
     this.handleItemClick = this.handleItemClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleItemClick(id){
@@ -24,12 +25,25 @@ class App extends React.Component {
     )
   }
 
+  handleSubmit(todoItem){
+    this.setState(
+      prev => ({
+        id: prev.id + 1,
+        data: prev.data.concat({
+          id: prev.id + 1,
+          text: todoItem,
+          completed: false
+        })
+      })
+    );
+  }
+
   render(){
 
     return (
       <div className="App">
         <TodoList handleItemClick={this.handleItemClick} data={this.state.data} />
-        <InputArea />
+        <InputArea handleSubmit={this.handleSubmit}/>
         <Footer />
       </div>
     );
