@@ -3,7 +3,7 @@ import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
 
-// https://stackoverflow.com/questions/36856232/write-add-data-in-json-file-using-node-js
+// TODO: experiment with local storage
 
 class App extends React.Component {
 
@@ -11,11 +11,12 @@ class App extends React.Component {
     super();
     this.state = {
       id: 0,
-      data: []
+      data: JSON.parse(localStorage.getItem('todoList')) || []
     }
     this.handleItemClick = this.handleItemClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
+    this.handleUnload = this.handleUnload.bind(this);
   }
 
   handleItemClick(id){
@@ -45,6 +46,18 @@ class App extends React.Component {
         data: prev.data.filter(item => id !== item.id)
       })
     );
+  }
+
+  handleUnload(){
+    localStorage.setItem('todoList', JSON.stringify(this.state.data));
+  }
+
+  componentDidMount(){
+    window.addEventListener('beforeunload', this.handleUnload)  
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('beforeunload', this.handleUnload);
   }
 
   render(){
