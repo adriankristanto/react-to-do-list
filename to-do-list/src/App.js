@@ -2,6 +2,9 @@ import React from 'react';
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 import todosData from "./todosData";
+import InputArea from "./InputArea";
+
+// https://stackoverflow.com/questions/36856232/write-add-data-in-json-file-using-node-js
 
 class App extends React.Component {
 
@@ -26,6 +29,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <TodoList handleItemClick={this.handleItemClick} data={this.state.data} />
+        <InputArea />
         <Footer />
       </div>
     );
