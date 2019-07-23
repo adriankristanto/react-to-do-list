@@ -1,78 +1,45 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import uuidv4 from 'uuid/v4';
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
 
-// class App extends React.Component {
-
-//   constructor(){
-//     super();
-//     this.state = {
-//       id: 0, // TODO: use uuid package instead
-//       data: JSON.parse(localStorage.getItem('todoList')) || []
-//     }
-//     this.handleItemClick = this.handleItemClick.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleRemoveClick = this.handleRemoveClick.bind(this);
-//     this.handleUnload = this.handleUnload.bind(this);
-//   }
-
-//   handleItemClick(id){
-//     this.setState(
-//       prev => ({
-//         data: prev.data.map(item => id === item.id ? {id: item.id, text: item.text, completed: !item.completed} : item)
-//       })
-//     )
-//   }
-
-//   handleSubmit(todoItem){
-//     todoItem.replace(/\s/g, '').length && this.setState(
-//       prev => ({
-//         id: prev.id + 1,
-//         data: prev.data.concat({
-//           id: prev.id + 1,
-//           text: todoItem,
-//           completed: false
-//         })
-//       })
-//     );
-//   }
-
-//   handleRemoveClick(id){
-//     this.setState(
-//       prev => ({
-//         data: prev.data.filter(item => id !== item.id)
-//       })
-//     );
-//   }
-
-//   handleUnload(){
-//     localStorage.setItem('todoList', JSON.stringify(this.state.data));
-//   }
-
-//   componentDidMount(){
-//     window.addEventListener('beforeunload', this.handleUnload)  
-//   }
-
-//   componentWillUnmount(){
-//     window.removeEventListener('beforeunload', this.handleUnload);
-//   }
-
-//   render(){
-
-//     return (
-//       <div className="App">
-//         <TodoList handleItemClick={this.handleItemClick} data={this.state.data} handleRemoveClick={this.handleRemoveClick}/>
-//         <InputArea handleSubmit={this.handleSubmit}/>
-//         <Footer />
-//       </div>
-//     );
-//   }
-
-// }
-
 function App(){
-  const [id, setId] = useState(0);
+  const [data, setData] = useState(JSON.parse(localStorage.getItem('todoList')) || []);
+
+  function handleItemClick(id){
+    setData(prev => prev.map(item => id === item.id ? {id: item.id, text: item.text, completed: !item.completed} : item));
+  }
+
+  function handleSubmit(todoItem){
+    todoItem.replace(/\s/g, '').length && 
+    setData(prev => prev.concat({
+      id: uuidv4(),
+      text: todoItem,
+      completed: false
+    }))
+  }
+  
+  function handleRemoveClick(id){
+    setData(prev => prev.filter(item => id !== item.id));
+  }
+
+  function handleUnload(){
+    localStorage.setItem('todoList', JSON.stringify(data));
+  }
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleUnload)
+    return window.removeEventListener('beforeunload', handleUnload);
+  });
+
+  return (
+      <div className="App">
+        <TodoList handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}/>
+        <InputArea handleSubmit={handleSubmit}/>
+        <Footer />
+      </div>
+  );
 }
 
 export default App;
