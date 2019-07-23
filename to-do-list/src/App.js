@@ -30,7 +30,7 @@ function App(){
 
   useEffect(() => {
     window.addEventListener('beforeunload', handleUnload)
-    return window.removeEventListener('beforeunload', handleUnload);
+    return () => {window.removeEventListener('beforeunload', handleUnload)};
   });
 
   return (
