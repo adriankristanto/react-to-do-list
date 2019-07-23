@@ -3,14 +3,12 @@ import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
 
-// TODO: experiment with local storage
-
 class App extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      id: 0,
+      id: 0, // TODO: use uuid package instead
       data: JSON.parse(localStorage.getItem('todoList')) || []
     }
     this.handleItemClick = this.handleItemClick.bind(this);
