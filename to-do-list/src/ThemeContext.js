@@ -5,6 +5,7 @@ export const ThemeContext = createContext();
 function ThemeContextProvider(props){
     const light = {
         color: 'black',
+        altColor: 'whitesmoke',
         itemBackground: '#D3D3D3',
         itemBackgroundOnHover: 'blue',
         backgroundColor: 'whitesmoke',
@@ -13,6 +14,7 @@ function ThemeContextProvider(props){
     }
     const dark = {
         color: 'whitesmoke',
+        altColor: 'black',
         itemBackground: '#282828',
         itemBackgroundOnHover: '#404040',
         backgroundColor: '#191919',
