@@ -8,14 +8,16 @@ function ThemeContextProvider(props){
         itemBackground: '#D3D3D3',
         itemBackgroundOnHover: 'blue',
         backgroundColor: 'whitesmoke',
-        emptyColor: 'lightgrey'
+        emptyColor: 'lightgrey',
+        footerColor: 'blue'
     }
     const dark = {
         color: 'whitesmoke',
         itemBackground: '#282828',
         itemBackgroundOnHover: '#404040',
         backgroundColor: '#191919',
-        emptyColor: '#404040'
+        emptyColor: '#404040',
+        footerColor: 'black'
     }
     const [state, setState] = useState({ isLightTheme: false,  lightTheme: light, darkTheme: dark });
 
@@ -25,3 +27,5 @@ function ThemeContextProvider(props){
         </ThemeContext.Provider>
     );
 }
+
+export default ThemeContextProvider;

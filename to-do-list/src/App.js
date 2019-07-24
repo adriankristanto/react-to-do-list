@@ -3,6 +3,7 @@ import uuidv4 from 'uuid/v4';
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
+import ThemeContextProvider from "./ThemeContext";
 
 function App(){
   const [data, setData] = useState(JSON.parse(localStorage.getItem('todoList')) || []);
@@ -34,11 +35,11 @@ function App(){
   });
 
   return (
-      <div className="App">
+      <ThemeContextProvider>
         <TodoList handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}/>
         <InputArea handleSubmit={handleSubmit}/>
         <Footer />
-      </div>
+      </ThemeContextProvider>
   );
 }
 
