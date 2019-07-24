@@ -19,7 +19,7 @@ function ThemeContextProvider(props){
         emptyColor: '#404040',
         footerColor: 'black'
     }
-    const [state, setState] = useState({ isLightTheme: true,  lightTheme: light, darkTheme: dark });
+    const [state, setState] = useState({ isLightTheme: false,  lightTheme: light, darkTheme: dark });
 
     function changeTheme(){
         setState(prev => ({
