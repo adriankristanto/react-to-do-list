@@ -9,9 +9,13 @@ function InputArea(props){
 
     const inputAreaStyle = isLightTheme ? {backgroundColor: lightTheme.footerColor} : {backgroundColor: darkTheme.footerColor};
     const buttonStyle = (isLightTheme) ?
-        (isMouseEnter ? {backgroundColor: lightTheme.itemBackgroundOnHover, color: lightTheme.color} : {backgroundColor: lightTheme.itemBackground, color: lightTheme.color})
+        (isMouseEnter ? 
+            {backgroundColor: lightTheme.itemBackgroundOnHover, color: lightTheme.color} :  
+            {backgroundColor: lightTheme.itemBackground, color: lightTheme.color})
     :
-        (isMouseEnter ? {backgroundColor: darkTheme.itemBackgroundOnHover, color: darkTheme.color} : {backgroundColor: darkTheme.itemBackground, color: darkTheme.color})
+        (isMouseEnter ? 
+            {backgroundColor: darkTheme.itemBackgroundOnHover, color: darkTheme.color} : 
+            {backgroundColor: darkTheme.itemBackground, color: darkTheme.color})
     const textboxStyle = isLightTheme ? {backgroundColor: lightTheme.itemBackground, color: lightTheme.color} : {backgroundColor: darkTheme.itemBackground, color: darkTheme.color}
 
 

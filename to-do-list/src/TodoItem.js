@@ -17,7 +17,7 @@ function TodoItem(props){
         (buttonIsMouseEnter ? {backgroundColor: darkTheme.itemBackground, color: darkTheme.color} : {backgroundColor: "Transparent", color: darkTheme.color})
 
     const itemStyle = {
-        color: !props.todo.completed ? "whitesmoke" : "#505050",
+        color: !props.todo.completed ? (isLightTheme ? lightTheme.color: darkTheme.color) : "#505050",
         textDecoration: props.todo.completed && "line-through",
         fontStyle: props.todo.completed && "italic"
     }

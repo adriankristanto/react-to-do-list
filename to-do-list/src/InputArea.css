@@ -7,7 +7,7 @@
 
 .input-area input[type=text] {
     width: 95%;
-    border: 1px groove #282828;
+    border: None;
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -17,8 +17,8 @@
 }
 
 .input-area button {
+    border: None;
     width: 3%;
-    border: 1px groove #282828;
     border-radius: 5px;
     position: absolute;
     margin: 10px 5px;
@@ -33,20 +33,20 @@
 
     .input-area input[type=text] {
         width: 80%;
-        border: 1px groove #282828;
+        border: None;
         border-radius: 5px;
         padding-left: 10px; 
-        font-size: 25px;
+        font-size: 20px;
         margin: 5px;
     }
     
     .input-area button {
         width: 15%;
-        border: 1px groove #282828;
+        border: None;
         border-radius: 5px;
         position: absolute;
         margin: 5px 0;
-        font-size: 25px;
+        font-size: 20px;
         text-align: center;
     }
 

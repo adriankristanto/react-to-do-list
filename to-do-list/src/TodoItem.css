@@ -1,6 +1,6 @@
 .todo-item {
     display: flex;
-    border: 1px groove #282828;
+    border: None;
     border-radius: 5px;
     margin: 5px;
     align-items: center;

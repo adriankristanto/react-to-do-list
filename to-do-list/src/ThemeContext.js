@@ -6,24 +6,22 @@ export const ThemeContext = createContext();
 
 function ThemeContextProvider(props){
     const light = {
-        color: 'black',
-        altColor: 'whitesmoke',
-        itemBackground: 'whitesmoke',
-        itemBackgroundOnHover: 'blue',
-        backgroundColor: 'whitesmoke',
-        emptyColor: 'lightgrey',
-        footerColor: 'blue'
+        color: '#0A0A0A',
+        itemBackground: '#D0D0D0',
+        itemBackgroundOnHover: '#B0B0B0',
+        backgroundColor: '#E6E6E6',
+        emptyColor: '#B0B0B0',
+        footerColor: 'white'
     }
     const dark = {
         color: 'whitesmoke',
-        altColor: 'black',
         itemBackground: '#282828',
         itemBackgroundOnHover: '#404040',
         backgroundColor: '#191919',
         emptyColor: '#404040',
         footerColor: 'black'
     }
-    const [state, setState] = useState({ isLightTheme: false,  lightTheme: light, darkTheme: dark });
+    const [state, setState] = useState({ isLightTheme: true,  lightTheme: light, darkTheme: dark });
 
     function changeTheme(){
         setState(prev => ({
