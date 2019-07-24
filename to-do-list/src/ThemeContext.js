@@ -25,8 +25,16 @@ function ThemeContextProvider(props){
     }
     const [state, setState] = useState({ isLightTheme: false,  lightTheme: light, darkTheme: dark });
 
+    function changeTheme(){
+        setState(prev => ({
+            isLightTheme: !prev.isLightTheme,
+            lightTheme: light,
+            darkTheme: dark
+        }))
+    }
+
     return(
-        <ThemeContext.Provider value={state}>
+        <ThemeContext.Provider value={{...state, changeTheme}}>
             {props.children}
         </ThemeContext.Provider>
     );
