@@ -2,8 +2,6 @@ import React, { useState, createContext } from 'react';
 
 export const ThemeContext = createContext();
 
-// for light theme, change to something that is not blue
-
 function ThemeContextProvider(props){
     const light = {
         color: '#0A0A0A',
