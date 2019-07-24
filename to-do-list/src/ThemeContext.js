@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 export const ThemeContext = createContext();
 
@@ -19,7 +19,9 @@ function ThemeContextProvider(props){
         emptyColor: '#404040',
         footerColor: 'black'
     }
-    const [state, setState] = useState({ isLightTheme: false,  lightTheme: light, darkTheme: dark });
+    
+    const themePref = JSON.parse(localStorage.getItem('theme-pref'))
+    const [state, setState] = useState({ isLightTheme: themePref ? themePref.isLightTheme : false,  lightTheme: light, darkTheme: dark });
 
     function changeTheme(){
         setState(prev => ({
@@ -28,6 +30,11 @@ function ThemeContextProvider(props){
             darkTheme: dark
         }))
     }
+
+    useEffect(()=>{
+        window.addEventListener('beforeunload', () => localStorage.setItem('theme-pref', JSON.stringify({isLightTheme: state.isLightTheme})));
+        return () => window.removeEventListener('beforeunload', () => localStorage.setItem('theme-pref', JSON.stringify({isLightTheme: state.isLightTheme})));
+    });
 
     return(
         <ThemeContext.Provider value={{...state, changeTheme}}>
