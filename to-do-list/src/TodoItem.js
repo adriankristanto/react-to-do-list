@@ -3,7 +3,7 @@ import "./TodoItem.css";
 import { ThemeContext } from "./ThemeContext";
 import styled from 'styled-components';
 import {Draggable} from 'react-beautiful-dnd';
-import uuidv4 from 'uuid/v4';
+// import uuidv4 from 'uuid/v4';
 
 const Container = styled.div``
 
@@ -28,7 +28,7 @@ function TodoItem(props){
     }
 
     return (
-        <Draggable draggableId={props.todo.id} index={props.index}>
+        <Draggable draggableId={props.todo.id.toString()} index={props.index}>
             {(provided) => (
                 <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                     <div className="todo-item" style={todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >

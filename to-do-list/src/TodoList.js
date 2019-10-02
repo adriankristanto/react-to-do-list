@@ -15,6 +15,7 @@ function TodoList(props){
                 (props.data.map( (todoItem, index) => <TodoItem key={todoItem.id} todo={todoItem} index = {index} handleItemClick={props.handleItemClick} handleRemoveClick={props.handleRemoveClick}/>)) :
                 (<p className="empty" style={emptyStyle}>Nothing ToDo.</p>)
             }
+            {props.placeholder}
         </div>
     );
 }

@@ -36,17 +36,22 @@ function App(){
   });
 
   function onDragEnd(result){
-    // return 
+    const {destination, source} = result;
+    if (destination && destination.index !== source.index){
+      const newArray = Array.from(data)
+      newArray.splice(source.index, 1);
+      console.log(newArray)
+      newArray.splice(destination.index, 0, data[source.index])
+      setData(newArray);
+    }
   }
 
   return (
-      <ThemeContextProvider onDragEnd={onDragEnd}>
-        <DragDropContext>
+      <ThemeContextProvider>
+        <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId={uuidv4()}>
             {(provided) => (
-              <TodoList {...provided.droppableProps} innerRef={provided.innerRef} handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}>
-                {provided.placeholder}
-              </TodoList>
+              <TodoList {...provided.droppableProps} innerRef={provided.innerRef} handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick} placeholder={provided.placeholder}/>
             )}
           </Droppable>
         </DragDropContext>
