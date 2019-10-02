@@ -17,6 +17,14 @@ function TodoItem(props){
     :
     itemIsMouseEnter ? {backgroundColor: darkTheme.itemBackgroundOnHover} : {backgroundColor: darkTheme.itemBackground}
 
+    const todoitemStyleDragged = isLightTheme ? {
+        boxShadow: "5px 10px 18px grey",
+        ...todoitemStyle
+    } : {
+        boxShadow: "5px 10px 18px black",
+        ...todoitemStyle
+    }
+
     const buttonStyle = isLightTheme ? 
         (buttonIsMouseEnter ? {backgroundColor: lightTheme.itemBackground, color: lightTheme.color} : {backgroundColor: "Transparent", color: lightTheme.color}) : 
         (buttonIsMouseEnter ? {backgroundColor: darkTheme.itemBackground, color: darkTheme.color} : {backgroundColor: "Transparent", color: darkTheme.color})
@@ -29,9 +37,9 @@ function TodoItem(props){
 
     return (
         <Draggable draggableId={props.todo.id.toString()} index={props.index}>
-            {(provided) => (
+            {(provided, snapshot) => (
                 <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                    <div className="todo-item" style={todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
+                    <div className="todo-item" style={snapshot.isDragging ? todoitemStyleDragged : todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
                         <input type="checkbox" checked={props.todo.completed} />
                         <p style={itemStyle}>{props.todo.text}</p>
                         <button onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setButtonIsMouseEnter(true)} onMouseLeave={()=>setButtonIsMouseEnter(false)} style={buttonStyle}>x</button>
