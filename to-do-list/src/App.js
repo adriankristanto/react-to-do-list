@@ -40,7 +40,6 @@ function App(){
     if (destination && destination.index !== source.index){
       const newArray = Array.from(data)
       newArray.splice(source.index, 1);
-      console.log(newArray)
       newArray.splice(destination.index, 0, data[source.index])
       setData(newArray);
     }
