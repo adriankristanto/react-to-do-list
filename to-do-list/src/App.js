@@ -4,6 +4,7 @@ import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
 import ThemeContextProvider from "./ThemeContext";
+import {DragDropContext} from 'react-beautiful-dnd';
 
 function App(){
   const [data, setData] = useState(JSON.parse(localStorage.getItem('todoList')) || []);
@@ -34,9 +35,15 @@ function App(){
     return () => {window.removeEventListener('beforeunload', handleUnload)};
   });
 
+  function onDragEnd(result){
+    return 
+  }
+
   return (
-      <ThemeContextProvider>
-        <TodoList handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}/>
+      <ThemeContextProvider onDragEnd={onDragEnd}>
+        <DragDropContext>
+          <TodoList handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}/>
+        </DragDropContext>
         <InputArea handleSubmit={handleSubmit}/>
         <Footer />
       </ThemeContextProvider>

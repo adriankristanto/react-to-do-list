@@ -1,6 +1,9 @@
 import React, {useContext, useState} from "react";
 import "./TodoItem.css";
 import { ThemeContext } from "./ThemeContext";
+import styled from 'styled-components';
+
+const Container = styled.div``
 
 function TodoItem(props){
     const {isLightTheme, lightTheme, darkTheme} = useContext(ThemeContext);
