@@ -36,7 +36,7 @@ function App(){
   });
 
   function onDragEnd(result){
-    return 
+    // return 
   }
 
   return (

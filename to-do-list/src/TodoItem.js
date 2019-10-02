@@ -2,6 +2,8 @@ import React, {useContext, useState} from "react";
 import "./TodoItem.css";
 import { ThemeContext } from "./ThemeContext";
 import styled from 'styled-components';
+import {Draggable} from 'react-beautiful-dnd';
+import uuidv4 from 'uuid/v4';
 
 const Container = styled.div``
 
@@ -26,11 +28,17 @@ function TodoItem(props){
     }
 
     return (
-        <div className="todo-item" style={todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
-            <input type="checkbox" checked={props.todo.completed} />
-            <p style={itemStyle}>{props.todo.text}</p>
-            <button onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setButtonIsMouseEnter(true)} onMouseLeave={()=>setButtonIsMouseEnter(false)} style={buttonStyle}>x</button>
-        </div>
+        <Draggable draggableId={props.todo.id} index={props.index}>
+            {(provided) => (
+                <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                    <div className="todo-item" style={todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
+                        <input type="checkbox" checked={props.todo.completed} />
+                        <p style={itemStyle}>{props.todo.text}</p>
+                        <button onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setButtonIsMouseEnter(true)} onMouseLeave={()=>setButtonIsMouseEnter(false)} style={buttonStyle}>x</button>
+                    </div>
+                </Container>
+            )}
+        </Draggable>
     );
 }
 
