@@ -4,7 +4,7 @@ import TodoList from "./TodoList";
 import Footer from "./Footer";
 import InputArea from "./InputArea";
 import ThemeContextProvider from "./ThemeContext";
-import {DragDropContext} from 'react-beautiful-dnd';
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
 function App(){
   const [data, setData] = useState(JSON.parse(localStorage.getItem('todoList')) || []);
@@ -42,7 +42,13 @@ function App(){
   return (
       <ThemeContextProvider onDragEnd={onDragEnd}>
         <DragDropContext>
-          <TodoList handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}/>
+          <Droppable droppableId={uuidv4()}>
+            {(provided) => (
+              <TodoList {...provided.droppableProps} innerRef={provided.innerRef} handleItemClick={handleItemClick} data={data} handleRemoveClick={handleRemoveClick}>
+                {provided.placeholder}
+              </TodoList>
+            )}
+          </Droppable>
         </DragDropContext>
         <InputArea handleSubmit={handleSubmit}/>
         <Footer />
