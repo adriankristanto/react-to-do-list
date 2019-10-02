@@ -10,11 +10,12 @@ function TodoList(props){
     const emptyStyle = isLightTheme ? {color: lightTheme.emptyColor} : {color: darkTheme.emptyColor}
 
     return (
-        <div className="todo-list" style={todolistStyle}>
+        <div className="todo-list" style={todolistStyle} ref={props.innerRef}>
             {props.data.length !== 0 ?
-                (props.data.map( todoItem => <TodoItem key={todoItem.id} todo={todoItem} handleItemClick={props.handleItemClick} handleRemoveClick={props.handleRemoveClick}/>)) :
+                (props.data.map( (todoItem, index) => <TodoItem key={todoItem.id} todo={todoItem} index = {index} handleItemClick={props.handleItemClick} handleRemoveClick={props.handleRemoveClick}/>)) :
                 (<p className="empty" style={emptyStyle}>Nothing ToDo.</p>)
             }
+            {props.placeholder}
         </div>
     );
 }
