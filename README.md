@@ -3,7 +3,7 @@ My attempt at creating a To Do List app with React
 
 # Features
 ## 1. Light & Dark Theme
-![Theme Change Demo](assets/themedemo.mov)
+![Theme Change Demo](assets/themedemo.gif)
 ## 2. Basic Features
 ![Add Item Demo](assets/additemdemo.mov)
 ![Completed Demo](assets/completeddemo.mov)
