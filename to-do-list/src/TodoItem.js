@@ -46,7 +46,13 @@ function TodoItem(props){
 
     const dialogStyles = {
         position: 'absolute',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        color: isLightTheme ? lightTheme.color : darkTheme.color,
+        backgroundColor: isLightTheme ? lightTheme.backgroundColor : darkTheme.backgroundColor
+    }
+
+    const overlayStyles = {
+        backgroundColor: 'rgba(0,0,0,0.7)'
     }
 
     return (
@@ -56,12 +62,16 @@ function TodoItem(props){
                     <div className="todo-item" style={snapshot.isDragging ? todoitemStyleDragged : todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
                         <input type="checkbox" checked={props.todo.completed} />
                         <p style={itemStyle}>{props.todo.text}</p>
-                        <button id="details" onClick={() => simpleDialog.show()} onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={detailsStyle}>Show Details</button>
-                        <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={removeStyle}>x</button>
+                        <button id="details" 
+                            onClick={() => 
+                                {props.handleItemClick(props.todo.id)
+                                simpleDialog.show()}} 
+                            onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={detailsStyle}>Show Details</button>
+                        <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={removeStyle}>&times;</button>
                     </div>
 
-                    <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles}>
-                        Hello World!
+                    <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles} overlayStyles={overlayStyles} title={props.todo.text}>
+                        Status: {props.todo.completed ? 'Completed' : 'In Progress'}
                     </SkyLight>
                 </Container>
             )}
