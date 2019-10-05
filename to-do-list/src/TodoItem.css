@@ -7,12 +7,20 @@
     padding-left: 10px;
   }
 
-  .todo-item button {
+  .todo-item #remove {
     position: absolute;
     right: 20px;
-    border-radius: 50%;
+    border-radius: 100%;
     outline: none;
     border: none;
+  }
+
+  .todo-item #details {
+    position: absolute;
+    border-radius: 5px;
+    right: 50px;
+    border: none;
+    outline: none;
   }
   
   .todo-item p {
