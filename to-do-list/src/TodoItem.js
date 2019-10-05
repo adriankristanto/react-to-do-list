@@ -70,8 +70,11 @@ function TodoItem(props){
                         <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={{...removeStyle, fontSize: '14px'}}>&times;</button>
                     </div>
 
-                    <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles} overlayStyles={overlayStyles} title={props.todo.text}>
-                        Status: {props.todo.completed ? 'Completed' : 'In Progress'}
+                    <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles} overlayStyles={overlayStyles}>
+                        Task Title:
+                        <h1 style={{textAlign: 'center'}}>{props.todo.text}</h1>
+                        Status: 
+                        <p style={{textAlign:'center'}}>{props.todo.completed ? 'Completed' : 'In Progress'}</p>
                     </SkyLight>
                 </Container>
             )}
