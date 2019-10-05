@@ -14,6 +14,9 @@ function TodoItem(props){
     const [itemIsMouseEnter, setItemIsMouseEnter] = useState(false);
     const [detailsIsMouseEnter, setDetailsIsMouseEnter] = useState(false);
 
+    // the following variable is used for react skylight modal
+    let simpleDialog;
+
     const todoitemStyle = isLightTheme ? 
     itemIsMouseEnter ? {backgroundColor: lightTheme.itemBackgroundOnHover} : {backgroundColor: lightTheme.itemBackground}
     :
@@ -41,6 +44,11 @@ function TodoItem(props){
         fontStyle: props.todo.completed && "italic"
     }
 
+    const dialogStyles = {
+        position: 'absolute',
+        borderRadius: '5px'
+    }
+
     return (
         <Draggable draggableId={props.todo.id.toString()} index={props.index}>
             {(provided, snapshot) => (
@@ -48,9 +56,13 @@ function TodoItem(props){
                     <div className="todo-item" style={snapshot.isDragging ? todoitemStyleDragged : todoitemStyle} onClick={() => props.handleItemClick(props.todo.id)} onMouseEnter={() => setItemIsMouseEnter(true)} onMouseLeave={() => setItemIsMouseEnter(false)} >
                         <input type="checkbox" checked={props.todo.completed} />
                         <p style={itemStyle}>{props.todo.text}</p>
-                        <button id="details" onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={detailsStyle}>Show Details</button>
+                        <button id="details" onClick={() => simpleDialog.show()} onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={detailsStyle}>Show Details</button>
                         <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={removeStyle}>x</button>
                     </div>
+
+                    <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles}>
+                        Hello World!
+                    </SkyLight>
                 </Container>
             )}
         </Draggable>
