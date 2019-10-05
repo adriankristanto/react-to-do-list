@@ -52,7 +52,7 @@ function TodoItem(props){
     }
 
     const overlayStyles = {
-        backgroundColor: 'rgba(0,0,0,0.7)'
+        backgroundColor: 'rgba(0,0,0,0.8)'
     }
 
     return (
@@ -66,8 +66,8 @@ function TodoItem(props){
                             onClick={() => 
                                 {props.handleItemClick(props.todo.id)
                                 simpleDialog.show()}} 
-                            onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={detailsStyle}>Show Details</button>
-                        <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={removeStyle}>&times;</button>
+                            onMouseEnter={() => setDetailsIsMouseEnter(true)} onMouseLeave={() => setDetailsIsMouseEnter(false)} style={{...detailsStyle, fontSize: '14px'}}>Show Details</button>
+                        <button id="remove" onClick={() => props.handleRemoveClick(props.todo.id)} onMouseEnter={()=>setRemoveIsMouseEnter(true)} onMouseLeave={()=>setRemoveIsMouseEnter(false)} style={{...removeStyle, fontSize: '14px'}}>&times;</button>
                     </div>
 
                     <SkyLight hideOnOverlayClicked ref={ref => simpleDialog = ref} dialogStyles={dialogStyles} overlayStyles={overlayStyles} title={props.todo.text}>

@@ -10,7 +10,7 @@
   .todo-item #remove {
     position: absolute;
     right: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     outline: none;
     border: none;
   }
