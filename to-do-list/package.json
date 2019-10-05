@@ -7,6 +7,7 @@
     "react-beautiful-dnd": "^11.0.5",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-skylight": "^0.5.1",
     "styled-components": "^4.4.0",
     "uuid": "^3.3.2"
   },
