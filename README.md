@@ -10,3 +10,4 @@ My attempt at creating a To Do List app with React
 ![Removed Demo](assets/removeddemo.gif)
 ## 3. Drag and Drop
 ![Drag and Drop Demo](assets/draganddropdemo.gif)
+## 4. Show Task Details (In Progress)
